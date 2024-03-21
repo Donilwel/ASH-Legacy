@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{27A5DA0A-2277-B442-1EC1-E4784A61C5E4}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Weapon.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Bullet.cs" Line="16" Column="31" />
+      <File FileName="Assets/Scripts/Weapon.cs" Line="114" Column="49" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ASH-Legacy" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Weapon.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c7ac4dbd-ef42-4bd8-8d7f-7588260976be" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
