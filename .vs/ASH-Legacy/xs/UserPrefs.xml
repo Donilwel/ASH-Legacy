@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{27A5DA0A-2277-B442-1EC1-E4784A61C5E4}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AmmoManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader">
     <Files>
       <File FileName="Assets/Scripts/Bullet.cs" Line="27" Column="145" />
-      <File FileName="Assets/Scripts/Weapon.cs" Line="85" Column="10" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" />
+      <File FileName="Assets/Scripts/Weapon.cs" Line="77" Column="15" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
       <File FileName="Library/PackageCache/com.unity.collab-proxy@2.3.1/Editor/PlasticSCM/Configuration/CloudEdition/Welcome/AutoLogin.cs" />
       <File FileName="Assets/Scripts/MouseMovement.cs" />
-      <File FileName="Assets/Scripts/GlobalReferences.cs" />
-      <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" />
-      <File FileName="Assets/Scripts/SoundManager.cs" />
-      <File FileName="Assets/Scripts/AmmoManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GlobalReferences.cs" Line="7" Column="5" />
+      <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="11" Column="37" />
+      <File FileName="Assets/Scripts/AmmoManager.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,7 +17,7 @@
           <Node name="ASH-Legacy" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="AmmoManager.cs" selected="True" />
+                <Node name="Weapon.cs" selected="True" />
               </Node>
             </Node>
           </Node>
