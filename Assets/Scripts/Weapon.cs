@@ -21,6 +21,9 @@ public class Weapon : MonoBehaviour
     public float bulletVelocity = 30;
     public float bulletPrefabLifeTime = 3f;
 
+    public GameObject muzzleEffect;
+
+    private Animator animator;
 
     public enum ShootingMode
     {
@@ -35,6 +38,7 @@ public class Weapon : MonoBehaviour
     {
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -59,6 +63,10 @@ public class Weapon : MonoBehaviour
 
     private void FireWeapon()
     {
+
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+        animator.SetTrigger("RECOIL");
+        SoundManager.Instance.shootingSoundM1911.Play();
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
