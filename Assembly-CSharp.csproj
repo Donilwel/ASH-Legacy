@@ -69,6 +69,7 @@
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/GunAim.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/Scripts/AmmoManager.cs" />
+    <Compile Include="Assets/MiniCardMovement.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/GunShoot.cs" />
     <Compile Include="Assets/Scripts/Weapon.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleCollision.cs" />

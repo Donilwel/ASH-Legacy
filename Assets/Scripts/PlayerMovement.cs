@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
-    public float speed = 12f;
+    public float speed;
+    public float usialSpeed = 10f;
+    public float runSpeed = 20f;
+    public float sloveSpeed = 2f;
+
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
@@ -27,6 +31,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Проверяем, нажата ли клавиша бега (например, Left Shift)
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed; // Переключаемся на бег
+        }
+        else if (Input.GetKey(KeyCode.Alpha5))
+        {
+            speed = sloveSpeed; // Переключаемся на медленную ходьбу
+        }
+        else
+        {
+            speed = usialSpeed; // Возвращаемся к ходьбе
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if(isGrounded && velocity.y < 0)
         {

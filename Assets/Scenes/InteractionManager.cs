@@ -25,28 +25,38 @@ public class InteractionManager : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit))
+        bool hitWeapon = false;
+
+        if (Physics.Raycast(ray, out hit))
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
+            Weapon weapon = objectHitByRaycast.GetComponent<Weapon>();
 
-            if (objectHitByRaycast.GetComponent<Weapon>())
+            // Проверяем, является ли объект оружием и не является ли он активным оружием
+            if (weapon && !weapon.isActiveWeapon)
             {
                 print("Selected Weapon");
-                hoveredWeapon = objectHitByRaycast.gameObject.GetComponent<Weapon>();
+                if (hoveredWeapon)
+                {
+                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                }
+                hoveredWeapon = weapon;
                 hoveredWeapon.GetComponent<Outline>().enabled = true;
+                hitWeapon = true;
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
                 }
             }
-            else
-            {
-                if(hoveredWeapon)
-                {
-                    hoveredWeapon.GetComponent<Outline>().enabled = false;
-                }
-            }
+        }
+
+        // Если в этом кадре луч не попал в оружие, убираем выделение с последнего выделенного оружия.
+        if (!hitWeapon && hoveredWeapon)
+        {
+            hoveredWeapon.GetComponent<Outline>().enabled = false;
+            hoveredWeapon = null; // Сбросим ссылку на последнее выделенное оружие
         }
     }
+
 }
