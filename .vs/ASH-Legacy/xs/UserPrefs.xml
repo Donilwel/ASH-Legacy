@@ -11,9 +11,7 @@
       <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" />
       <File FileName="Assets/Scripts/SoundManager.cs" />
       <File FileName="Assets/Scenes/InteractionManager.cs" />
-      <File FileName="Assets/WeaponManager.cs" />
-      <File FileName="Assets/MiniCardMovement.cs" />
-      <File FileName="Assets/Scripts/Enter_Out_Car.cs" Line="44" Column="1" />
+      <File FileName="Assets/Scripts/Enter_Out_Car.cs" Line="32" Column="53" />
       <File FileName="Assets/Scripts/Car.cs" />
     </Files>
     <Pads>
@@ -31,7 +29,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="aa6a6a29-e967-450d-915b-d56459e6dd45" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4c4d0493-8427-43d5-a29d-aad59d2df505" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

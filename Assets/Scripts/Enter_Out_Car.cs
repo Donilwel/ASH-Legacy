@@ -8,6 +8,7 @@ public class EnterExitCar : MonoBehaviour
     public GameObject car;
     public GameObject player;
     public Transform exitPoint;
+    public GameObject carCameraMap;
 
     private bool isPlayerInCar = false;
 
@@ -26,6 +27,7 @@ public class EnterExitCar : MonoBehaviour
     void EnterCar()
     {
         isPlayerInCar = true;
+        carCameraMap.SetActive(true);
         player.SetActive(false); // Скрываем игрока
         car.GetComponent<Car>().enabled = true; // Включаем управление машиной
         playerCamera.gameObject.SetActive(false); // Деактивируем камеру игрока
@@ -35,6 +37,7 @@ public class EnterExitCar : MonoBehaviour
     void ExitCar()
     {
         isPlayerInCar = false;
+        carCameraMap.SetActive(false);
         player.SetActive(true); // Показываем игрока
         player.transform.position = exitPoint.position; // Перемещаем игрока к точке выхода
         car.GetComponent<Car>().enabled = false; // Отключаем управление машиной
