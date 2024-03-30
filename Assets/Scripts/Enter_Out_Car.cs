@@ -1,43 +1,45 @@
 using UnityEngine;
 
-public class Enter_Out_Car : MonoBehaviour
+public class EnterExitCar : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject playerCamera;
+    public GameObject carCamera;
+ 
     public GameObject car;
-    public bool isPlayerInside = false;
+    public GameObject player;
+    public Transform exitPoint;
+
+    private bool isPlayerInCar = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearCar() && !isPlayerInside)
+        if (Input.GetKeyDown(KeyCode.E) && !isPlayerInCar)
         {
             EnterCar();
         }
-        else if (Input.GetKeyDown(KeyCode.E) && isPlayerInside)
+        else if (Input.GetKeyDown(KeyCode.E) && isPlayerInCar)
         {
             ExitCar();
         }
     }
 
-    bool isPlayerNearCar()
-    {
-        // Реализуйте логику проверки близости игрока к машине
-        return Vector3.Distance(player.transform.position, car.transform.position) < 3f;
-    }
-
     void EnterCar()
     {
-        isPlayerInside = true;
-        player.SetActive(false); // Скрыть игрока
-        // Передача управления машине
-        car.GetComponent<CarController>().enabled = true;
+        isPlayerInCar = true;
+        player.SetActive(false); // Скрываем игрока
+        car.GetComponent<Car>().enabled = true; // Включаем управление машиной
+        playerCamera.gameObject.SetActive(false); // Деактивируем камеру игрока
+        carCamera.gameObject.SetActive(true); // Активируем камеру машины
     }
 
     void ExitCar()
     {
-        isPlayerInside = false;
-        player.SetActive(true); // Показать игрока
-        player.transform.position = car.transform.position + new Vector3(1, 0, 0); // Игрок выходит рядом с машиной
-        // Возвращение управления игроку
-        car.GetComponent<CarController>().enabled = false;
+        isPlayerInCar = false;
+        player.SetActive(true); // Показываем игрока
+        player.transform.position = exitPoint.position; // Перемещаем игрока к точке выхода
+        car.GetComponent<Car>().enabled = false; // Отключаем управление машиной
+        playerCamera.gameObject.SetActive(true); // Активируем камеру игрока
+        carCamera.gameObject.SetActive(false); // Деактивируем камеру машины
     }
+
 }
