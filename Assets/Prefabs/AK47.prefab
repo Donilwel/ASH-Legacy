@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 3328698597259875592, guid: 6f3f45c1e76f64391aff99104b29f3a8,
         type: 3}
       propertyPath: m_Name
-      value: AK47 Variant
+      value: AK47
       objectReference: {fileID: 0}
     - target: {fileID: 3328698597259875592, guid: 6f3f45c1e76f64391aff99104b29f3a8,
         type: 3}

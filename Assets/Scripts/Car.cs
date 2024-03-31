@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
 
     void FixedUpdate()
     {
-        float torque = maxTorque * Input.GetAxis("Vertical");
+        float torque = maxTorque  * Input.GetAxis("Vertical");
         float steerAngle = maxSteerAngle * Input.GetAxis("Horizontal");
 
         wheelColliders[0].steerAngle = steerAngle;
