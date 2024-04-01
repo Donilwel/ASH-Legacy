@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnterExitCar : MonoBehaviour
@@ -10,8 +11,8 @@ public class EnterExitCar : MonoBehaviour
     public Transform exitPoint;
     public GameObject carCameraMap;
 
-    private bool isPlayerInCar = false;
-
+    public bool isPlayerInCar = false;
+    public static event Action<bool> OnPlayerEnterExitCar;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !isPlayerInCar)
@@ -27,6 +28,7 @@ public class EnterExitCar : MonoBehaviour
     void EnterCar()
     {
         isPlayerInCar = true;
+        OnPlayerEnterExitCar?.Invoke(isPlayerInCar);
         carCameraMap.SetActive(true);
         player.SetActive(false); // Скрываем игрока
         car.GetComponent<Car>().enabled = true; // Включаем управление машиной
@@ -37,6 +39,7 @@ public class EnterExitCar : MonoBehaviour
     void ExitCar()
     {
         isPlayerInCar = false;
+        OnPlayerEnterExitCar?.Invoke(isPlayerInCar);
         carCameraMap.SetActive(false);
         player.SetActive(true); // Показываем игрока
         player.transform.position = exitPoint.position; // Перемещаем игрока к точке выхода

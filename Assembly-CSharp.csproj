@@ -78,6 +78,7 @@
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleCollision.cs" />
     <Compile Include="Assets/Scripts/SoundManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ExtinguishableFire.cs" />
+    <Compile Include="Assets/Scripts/SoundMovementCar.cs" />
     <Compile Include="Assets/Scripts/MouseMovement.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>

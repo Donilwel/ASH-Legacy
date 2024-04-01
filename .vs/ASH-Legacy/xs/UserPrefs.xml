@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{27A5DA0A-2277-B442-1EC1-E4784A61C5E4}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SpeedCar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enter_Out_Car.cs">
     <Files>
-      <File FileName="Assets/Scripts/AmmoManager.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/AmmoManager.cs" Line="3" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/Bullet.cs" />
       <File FileName="Assets/Scripts/Weapon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
@@ -9,12 +9,14 @@
       <File FileName="Assets/Scripts/MouseMovement.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GlobalReferences.cs" Line="1" Column="1" />
       <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" />
-      <File FileName="Assets/Scripts/SoundManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="74" Column="9" />
       <File FileName="Assets/Scenes/InteractionManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Enter_Out_Car.cs" Line="30" Column="38" />
+      <File FileName="Assets/Scripts/Enter_Out_Car.cs" Line="28" Column="6" />
       <File FileName="Assets/Scripts/Car.cs" Line="98" Column="1" />
       <File FileName="Assets/Scripts/WeaponManager.cs" Line="71" Column="9" />
-      <File FileName="Assets/Scripts/SpeedCar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SpeedCar.cs" Line="10" Column="16" />
+      <File FileName="Assets/Scripts/SoundMovementCar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MiniCardMovement.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,7 +25,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Scenes" expanded="True" />
               <Node name="Scripts" expanded="True">
-                <Node name="SpeedCar.cs" selected="True" />
+                <Node name="Enter_Out_Car.cs" selected="True" />
               </Node>
             </Node>
           </Node>
