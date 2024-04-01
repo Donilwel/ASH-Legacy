@@ -5,7 +5,7 @@ public class EnterExitCar : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject carCamera;
- 
+
     public GameObject car;
     public GameObject player;
     public Transform exitPoint;

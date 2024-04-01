@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource emptyMagazineSoundM1911;
 
     public AudioSource engineSoundSource; // Источник звука двигателя
+    public AudioSource emptyFuel;
+
     public Rigidbody carRigidbody; // Ссылка на Rigidbody автомобиля
     public Transform playerTransform; // Трансформ игрока
     public float minPitch = 0.5f;
@@ -41,6 +43,7 @@ public class SoundManager : MonoBehaviour
         isPlayerInCar = isInCar;
     }
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,13 +62,14 @@ public class SoundManager : MonoBehaviour
         switch (weapon)
         {
             case Weapon.WeaponModel.AK47:
-               ShootingChannel.PlayOneShot(AK47Shot);
+                ShootingChannel.PlayOneShot(AK47Shot);
                 break;
             case Weapon.WeaponModel.M1911:
                 ShootingChannel.PlayOneShot(M1911Shot);
                 break;
         }
     }
+
     public void PlayReloadSound(Weapon.WeaponModel weapon)
     {
         switch (weapon)
@@ -78,6 +82,13 @@ public class SoundManager : MonoBehaviour
                 break;
         }
     }
+
+    // Метод для воспроизведения звука заглохшего двигателя
+    public void PlayEngineStallSound()
+    {
+        emptyFuel.Play();
+    }
+
     private void Update()
     {
         // Если игрок в машине

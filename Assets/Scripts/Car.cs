@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    public UnityEngine.UI.Slider fuelSlider;
     public WheelCollider[] wheelColliders = new WheelCollider[4];
     public Transform[] tireMeshes = new Transform[4];
     public float maxTorque = 1500f;
@@ -9,75 +10,110 @@ public class Car : MonoBehaviour
     public float brakeForce = 6000f;
     public Rigidbody carRigidbody;
     public float downforce = 100f;
-    public float driftFactorSteer = 0.5f; // Фактор скольжения для управления
+    public float driftFactorSteer = 0.5f;
+    private AudioSource audioSource; // Для воспроизведения звуков автомобиля
+
+    public float fuel = 100f; // Уровень топлива
+    public float fuelConsumptionRate = 0.1f; // Скорость расхода топлива
+    private bool isEngineOn = true; // Состояние двигателя
 
     private void Start()
     {
         carRigidbody.centerOfMass -= new Vector3(0, 0.5f, 0);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        float torque = maxTorque * Input.GetAxis("Vertical");
-        float steerAngle = maxSteerAngle * Input.GetAxis("Horizontal");
+
+        if (fuelSlider != null)
+        {
+            fuelSlider.value = fuel / 100f; // предполагается, что fuelSlider.maxValue = 100
+        }
+
+        float throttleInput = Input.GetAxis("Vertical");
+        bool isCarMovingForward = throttleInput > 0;
         bool isBraking = Input.GetKey(KeyCode.Space);
 
-        // При торможении и повороте одновременно увеличиваем угол заноса
-        if (isBraking && Input.GetAxis("Horizontal") != 0)
+        if (isEngineOn && isCarMovingForward)
         {
-            ApplyDrifting(steerAngle, true);
+            // Расход топлива
+            fuel -= fuelConsumptionRate * throttleInput * Time.fixedDeltaTime; // Топливо тратится только при движении вперед
+            if (fuel < 0)
+            {
+                fuel = 0;
+            }
+
+            if (fuel == 0)
+            {
+                isEngineOn = false;
+                StopCar();
+                SoundManager.Instance.engineSoundSource.Stop();
+                if (isCarMovingForward)
+                {
+                    SoundManager.Instance.PlayEngineStallSound();
+                }
+
+            }
         }
-        else
+        if (fuel == 0)
         {
+            SoundManager.Instance.engineSoundSource.Stop();
+            if (isCarMovingForward)
+            {
+                SoundManager.Instance.PlayEngineStallSound();
+            }
+        }
+
+        if (isEngineOn)
+        {
+            // Логика управления автомобилем
+            float torque = maxTorque * throttleInput;
+            float steerAngle = maxSteerAngle * Input.GetAxis("Horizontal");
+
             ApplySteering(steerAngle);
             ApplyThrottle(torque, isBraking);
-        }
+            ApplyBrakes(isBraking);
 
-        UpdateWheelPoses();
-        ApplyDownforce();
+            UpdateWheelPoses();
+            ApplyDownforce();
+        }
     }
 
-    void ApplyDrifting(float steerAngle, bool isBraking)
+
+    private void StopCar()
     {
-        float driftSteerAngle = steerAngle * driftFactorSteer;
-        foreach (var wheelCollider in wheelColliders)
+        foreach (var wheel in wheelColliders)
         {
-            if (wheelCollider.transform.localPosition.z > 0)
-            {
-                wheelCollider.steerAngle = driftSteerAngle;
-            }
-            if (isBraking)
-            {
-                wheelCollider.brakeTorque = brakeForce;
-            }
-            else
-            {
-                wheelCollider.motorTorque = maxTorque;
-            }
+            wheel.motorTorque = 0;
+            wheel.brakeTorque = brakeForce;
         }
     }
 
-    void ApplySteering(float steerAngle)
+    private void ApplySteering(float steerAngle)
     {
-        foreach (var wheelCollider in wheelColliders)
+        for (int i = 0; i < 2; i++)
         {
-            if (wheelCollider.transform.localPosition.z > 0)
-            {
-                wheelCollider.steerAngle = steerAngle;
-            }
+            wheelColliders[i].steerAngle = steerAngle;
         }
     }
 
-    void ApplyThrottle(float torque, bool isBraking)
+    private void ApplyThrottle(float torque, bool isBraking)
     {
-        foreach (var wheelCollider in wheelColliders)
+        foreach (var wheel in wheelColliders)
         {
-            wheelCollider.motorTorque = isBraking ? 0 : torque;
-            wheelCollider.brakeTorque = isBraking ? brakeForce : 0;
+            wheel.motorTorque = isBraking ? 0 : torque;
         }
     }
 
-    void UpdateWheelPoses()
+    private void ApplyBrakes(bool isBraking)
+    {
+        foreach (var wheel in wheelColliders)
+        {
+            wheel.brakeTorque = isBraking ? brakeForce : 0;
+        }
+    }
+
+    private void UpdateWheelPoses()
     {
         for (int i = 0; i < wheelColliders.Length; i++)
         {
@@ -90,7 +126,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    void ApplyDownforce()
+    private void ApplyDownforce()
     {
         carRigidbody.AddForce(-transform.up * downforce * carRigidbody.velocity.magnitude);
     }
