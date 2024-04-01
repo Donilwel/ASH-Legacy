@@ -7,6 +7,7 @@ public class InteractionManager : MonoBehaviour
     public static InteractionManager Instance { get; set; }
 
     public Weapon hoveredWeapon = null;
+    public AmmoBox hoveredAmmoBox = null;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class InteractionManager : MonoBehaviour
         RaycastHit hit;
 
         bool hitWeapon = false;
+
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -49,8 +51,25 @@ public class InteractionManager : MonoBehaviour
                     WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
                 }
             }
-        }
+            if (objectHitByRaycast.GetComponent<AmmoBox>())
+            {
+                print("Selected Ammo");
+                hoveredAmmoBox = objectHitByRaycast.gameObject.GetComponent<AmmoBox>();
+                hoveredAmmoBox.GetComponent<Outline>().enabled = true;
+                hitWeapon = true;
 
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupAmmo(hoveredAmmoBox);
+                    Destroy(objectHitByRaycast.gameObject);
+                }
+            }
+        }
+        if(!hitWeapon && hoveredAmmoBox)
+        {
+            hoveredAmmoBox.GetComponent<Outline>().enabled = false;
+            hoveredAmmoBox = null; // Сбросим ссылку на последнее выделенное оружие
+        }
         // Если в этом кадре луч не попал в оружие, убираем выделение с последнего выделенного оружия.
         if (!hitWeapon && hoveredWeapon)
         {

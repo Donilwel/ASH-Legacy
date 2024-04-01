@@ -73,8 +73,10 @@
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/GunAim.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/Scripts/AmmoManager.cs" />
+    <Compile Include="Assets/Scripts/AmmoBox.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/GunShoot.cs" />
     <Compile Include="Assets/Scripts/Weapon.cs" />
+    <Compile Include="Assets/Scripts/HUDManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleCollision.cs" />
     <Compile Include="Assets/Scripts/SoundManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ExtinguishableFire.cs" />
@@ -102,6 +104,7 @@
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />
+    <None Include="Assets/DANKIE/Ultimate2DWeaponPacks/Ultimate2DModernWeapons/Volume1 - Warfare Weapons/Readme_DANKIE.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" />
     <None Include="Assets/QuickOutline/Resources/Shaders/OutlineFill.shader" />
     <None Include="Assets/UnityTechnologies/EffectExamples/Shared/Shaders/SurfaceShader_VC.shader" />
@@ -743,6 +746,9 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
@@ -838,6 +844,9 @@
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>

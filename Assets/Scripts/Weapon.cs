@@ -80,10 +80,11 @@ public class Weapon : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading && WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > 0)
             {
                 Reload();
             }
+          
 
             if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
             {
@@ -96,10 +97,10 @@ public class Weapon : MonoBehaviour
                 FireWeapon();
             }
 
-            if (AmmoManager.Instance.ammoDisplay != null)
-            {
-                AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
-            }
+            //if (AmmoManager.Instance.ammoDisplay != null)
+            //{
+            //    AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst}/{magazineSize / bulletsPerBurst}";
+            //}
         }
         
     }
@@ -144,11 +145,22 @@ public class Weapon : MonoBehaviour
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
     }
+
     private void ReloadCompleted()
     {
-        bulletsLeft = magazineSize;
+        if(WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > magazineSize)
+        {
+            bulletsLeft = magazineSize;
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, thisWeaponModel); 
+        }
+        else
+        {
+            bulletsLeft = WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel);
+            WeaponManager.Instance.DecreaseTotalAmmo(bulletsLeft, thisWeaponModel);
+        }
         isReloading = false;
     }
+
     private void ResetShot()
     {
         readyToShoot = true;
