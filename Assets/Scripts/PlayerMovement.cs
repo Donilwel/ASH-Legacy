@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxStamina = 100f; // Максимальный уровень стамины
     public float staminaDecreasePerSecond = 10f; // Скорость расхода стамины в секунду
     public float staminaRecoveryPerSecond = 5f; // Скорость восстановления стамины в секунду
+    public Slider staminaBar;
+    public Text staminaText;
 
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
@@ -33,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        staminaBar.maxValue = maxStamina;
+        staminaBar.value = stamina;
     }
 
     void Update()
@@ -62,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         {
             canRun = false;
         }
+        staminaBar.value = stamina; // Обновление шкалы стамины
+        staminaText.text = "Уровень стамины: " + Mathf.Round(stamina * 100f / maxStamina).ToString() + "%";
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
