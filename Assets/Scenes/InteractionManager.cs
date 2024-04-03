@@ -8,6 +8,7 @@ public class InteractionManager : MonoBehaviour
 
     public Weapon hoveredWeapon = null;
     public AmmoBox hoveredAmmoBox = null;
+    //public Canister hoveredCanister = null;
 
     private void Awake()
     {
@@ -64,8 +65,27 @@ public class InteractionManager : MonoBehaviour
                     Destroy(objectHitByRaycast.gameObject);
                 }
             }
+            //if (objectHitByRaycast.GetComponent<Canister>())
+            //{
+            //    print("Selected canister");
+            //    hoveredCanister = objectHitByRaycast.gameObject.GetComponent<Canister>();
+            //    hoveredCanister.GetComponent<Outline>().enabled = true;
+            //    hitWeapon = true;
+
+            //    if (Input.GetKeyDown(KeyCode.F))
+            //    {
+            //        Destroy(objectHitByRaycast.gameObject);
+            //        //
+            //        Refuel(20f);
+            //    }
+            //}
         }
-        if(!hitWeapon && hoveredAmmoBox)
+        //if (!hitWeapon && hoveredCanister)
+        //{
+        //     hoveredCanister.GetComponent<Outline>().enabled = false;
+        //     hoveredCanister = null; // Сбросим ссылку на последнее выделенное оружие
+        //}
+        if (!hitWeapon && hoveredAmmoBox)
         {
             hoveredAmmoBox.GetComponent<Outline>().enabled = false;
             hoveredAmmoBox = null; // Сбросим ссылку на последнее выделенное оружие

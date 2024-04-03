@@ -79,6 +79,15 @@ public class Car : MonoBehaviour
         }
     }
 
+    internal void Refuel(float amount)
+    {
+        fuel += amount;
+        if (fuel > 100f) // Предполагаем, что 100 - это максимальный объём топлива
+        {
+            fuel = 100f;
+        }
+    }
+
 
     private void StopCar()
     {

@@ -67,6 +67,7 @@
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleExamples.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleMenu.cs" />
     <Compile Include="Assets/Scripts/Bullet.cs" />
+    <Compile Include="Assets/Menu/MenuStart.cs" />
     <Compile Include="Assets/QuickOutline/Scripts/Outline.cs" />
     <Compile Include="Assets/Scripts/EnterOutCar.cs" />
     <Compile Include="Assets/Scripts/WeaponManager.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleCollision.cs" />
     <Compile Include="Assets/Scripts/SoundManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ExtinguishableFire.cs" />
-    <Compile Include="Assets/Scripts/SoundMovementCar.cs" />
     <Compile Include="Assets/Scripts/MouseMovement.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>

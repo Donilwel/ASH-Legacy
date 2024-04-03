@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 20f;
     public float sloveSpeed = 2f;
 
+    public float stamina = 100f; // Текущий уровень стамины
+    public float maxStamina = 100f; // Максимальный уровень стамины
+    public float staminaDecreasePerSecond = 10f; // Скорость расхода стамины в секунду
+    public float staminaRecoveryPerSecond = 5f; // Скорость восстановления стамины в секунду
+
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
@@ -21,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
     bool isMoving;
+    private bool canRun = true; // Игрок может бежать
 
     private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
 
@@ -32,21 +38,33 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Проверяем, нажата ли клавиша бега (например, Left Shift)
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isMoving && canRun)
         {
+            stamina -= staminaDecreasePerSecond * Time.deltaTime;
             speed = runSpeed; // Переключаемся на бег
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            speed = sloveSpeed; // Переключаемся на медленную ходьбу
         }
         else
         {
-            speed = usialSpeed; // Возвращаемся к ходьбе
+            if (stamina < maxStamina)
+            {
+                stamina += staminaRecoveryPerSecond * Time.deltaTime; // Восстанавливаем стамину
+                if (stamina >= 10)
+                {
+                    canRun = true; // Разрешаем бег, как только стамина достигает 10
+                }
+            }
+            speed = Input.GetKey(KeyCode.Alpha5) ? sloveSpeed : usialSpeed;
+        }
+        stamina = Mathf.Clamp(stamina, 0, maxStamina); //проверка на 0-100 стамины (ситуация -0.2 невозможна 101 тоже)
+
+        // Если стамина равна 0, запрещаем бег
+        if (stamina <= 0)
+        {
+            canRun = false;
         }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if(isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -57,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -65,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        if(lastPosition != gameObject.transform.position && isGrounded == true)
+        if (lastPosition != gameObject.transform.position && isGrounded == true)
         {
             isMoving = true;
         }
