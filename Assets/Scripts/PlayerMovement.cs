@@ -53,12 +53,12 @@ public class PlayerMovement : MonoBehaviour
         lastYPosition = transform.position.y;
 
         // Настройка UI смерти
-        deathScreen.SetActive(false);
         restartButton.onClick.AddListener(RestartGame);
     }
 
     void Update()
     {
+        Time.timeScale = 1f;
         // Система стамины
         HandleStamina();
 
@@ -171,7 +171,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
-        SoundManager.Instance.PlayDeathSound();
         deathScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -181,7 +180,6 @@ public class PlayerMovement : MonoBehaviour
     public void RestartGame()
     {
         deathScreen.SetActive(false);
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0); // Перезагружаем текущую сцену
     }
 }
