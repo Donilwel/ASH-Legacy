@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{27A5DA0A-2277-B442-1EC1-E4784A61C5E4}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnterOutCar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMovement.cs">
     <Files>
       <File FileName="Assets/Scripts/AmmoManager.cs" Line="3" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/Bullet.cs" />
       <File FileName="Assets/Scripts/Weapon.cs" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="174" Column="48" />
       <File FileName="Library/PackageCache/com.unity.collab-proxy@2.3.1/Editor/PlasticSCM/Configuration/CloudEdition/Welcome/AutoLogin.cs" />
       <File FileName="Assets/Scripts/MouseMovement.cs" />
       <File FileName="Assets/Scripts/GlobalReferences.cs" />
       <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" />
-      <File FileName="Assets/Scripts/SoundManager.cs" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="96" Column="49" />
       <File FileName="Assets/Scenes/InteractionManager.cs" />
       <File FileName="Assets/Scripts/Car.cs" />
       <File FileName="Assets/Scripts/WeaponManager.cs" />
@@ -18,7 +18,7 @@
       <File FileName="Assets/Scripts/AmmoBox.cs" />
       <File FileName="Assets/Scripts/HUDManager.cs" />
       <File FileName="Assets/Menu/MenuStart.cs" />
-      <File FileName="Assets/Scripts/EnterOutCar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnterOutCar.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -36,7 +36,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0a588c99-bfe5-41b0-84d6-29bb0312ebab" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4aa5ea3c-a431-47db-b291-70a7e95eef85" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

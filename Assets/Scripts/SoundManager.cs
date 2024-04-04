@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource engineSoundSource; // Источник звука двигателя
     public AudioSource emptyFuel;
+
+    public AudioSource deathPlayer;
 
     public Rigidbody carRigidbody; // Ссылка на Rigidbody автомобиля
     public Transform playerTransform; // Трансформ игрока
@@ -89,6 +92,11 @@ public class SoundManager : MonoBehaviour
         emptyFuel.Play();
     }
 
+    public void PlayDeathSound()
+    {
+        deathPlayer.Play();
+    }
+
     private void Update()
     {
         // Если игрок в машине
@@ -120,5 +128,6 @@ public class SoundManager : MonoBehaviour
                 engineSoundSource.Stop();
             }
         }
+
     }
 }

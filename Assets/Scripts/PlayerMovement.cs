@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         // Перемещение
         Movement();
 
-        // Проверка на смерть при падении
+        // Проверка на дамаг при падении
         CheckFallDamage();
 
         // Если здоровье <= 0, показываем экран смерти
@@ -130,42 +130,58 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckFallDamage()
     {
-        float currentYPosition = transform.position.y;
-        if (!isFalling && currentYPosition < lastYPosition)
+        // Проверяем, только если персонаж не на земле (в воздухе)
+        if (!isGrounded)
         {
-            isFalling = true;
-        }
-        if (isFalling && currentYPosition >= lastYPosition)
-        {
-            isFalling = false;
-            float fallDistance = lastYPosition - currentYPosition;
-            if (fallDistance > safeFallDistance)
+            float currentYPosition = transform.position.y;
+            // Если персонаж начинает падение
+            if (currentYPosition < lastYPosition)
             {
-                TakeDamage((fallDistance - safeFallDistance) * fallDamageMultiplier);
+                isFalling = true;
             }
         }
-        lastYPosition = transform.position.y;
+        else if (isFalling) // Если персонаж приземлился
+        {
+            float fallDistance = lastYPosition - transform.position.y;
+            isFalling = false;
+
+            if (fallDistance > safeFallDistance)
+            {
+                float damage = (fallDistance - safeFallDistance) * fallDamageMultiplier;
+                TakeDamage(damage);
+            }
+
+            // Сбрасываем lastYPosition после обработки падения
+            lastYPosition = transform.position.y;
+        }
+
+        // Обновляем lastYPosition, если персонаж на земле
+        if (isGrounded)
+        {
+            lastYPosition = transform.position.y;
+        }
     }
+
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
-        if (health <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()
     {
+        SoundManager.Instance.PlayDeathSound();
         deathScreen.SetActive(true);
-        Time.timeScale = 0f; // Останавливаем время
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        //Time.timeScale = 0f; // Останавливаем время
     }
 
-    void RestartGame()
+    public void RestartGame()
     {
-        Time.timeScale = 1f; // Возвращаем нормальное течение времени
+        Debug.Log("Restarting game...");
+        //Time.timeScale = 1f; // Возвращаем нормальное течение времени
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагружаем текущую сцену
     }
 }
