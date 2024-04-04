@@ -175,13 +175,13 @@ public class PlayerMovement : MonoBehaviour
         deathScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //Time.timeScale = 0f; // Останавливаем время
+        Time.timeScale = 0f; // Останавливаем время
     }
 
     public void RestartGame()
     {
-        Debug.Log("Restarting game...");
-        //Time.timeScale = 1f; // Возвращаем нормальное течение времени
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Перезагружаем текущую сцену
+        deathScreen.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 0); // Перезагружаем текущую сцену
     }
 }
