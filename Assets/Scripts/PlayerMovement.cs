@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     // Добавляемые переменные для здоровья
     public float health = 100f;
     public float maxHealth = 100f;
+    public Slider healthBar;
+
     private float lastYPosition;
     private bool isFalling = false;
     public float fallDamageMultiplier = 2f;
@@ -48,8 +50,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
+
         staminaBar.maxValue = maxStamina;
         staminaBar.value = stamina;
+        healthBar.value = health;
+
         lastYPosition = transform.position.y;
 
         // Настройка UI смерти
@@ -167,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
+        healthBar.value = health; // Обновляем значение слайдера здоровья
     }
 
     void Die()
