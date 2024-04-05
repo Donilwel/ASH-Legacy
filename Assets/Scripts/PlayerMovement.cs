@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public Slider staminaBar;
     public Text staminaText;
 
+    public bool hasFuelCanister = false;
+    public GameObject fuelIcon;
+
     public float gravity = -9.81f * 2;
     public float jumpHeight = 3f;
 
@@ -80,6 +83,23 @@ public class PlayerMovement : MonoBehaviour
         {
             Die();
         }
+
+        fuelIcon.SetActive(hasFuelCanister);
+    }
+
+    public void PickUpFuelCanister()
+    {
+        hasFuelCanister = true;
+    }
+
+    public bool UseFuelCanister()
+    {
+        if (hasFuelCanister)
+        {
+            hasFuelCanister = false;
+            return true;
+        }
+        return false;
     }
 
     void HandleStamina()
