@@ -58,6 +58,10 @@ public class HUDManager : MonoBehaviour
                 unActiveWeaponUI.sprite = GetWeaponSprite(unActiveWeapon.thisWeaponModel);
 
             }
+            if (activeWeapon)
+            {
+                activeWeaponUI.sprite = GetWeaponSprite(activeWeapon.thisWeaponModel);
+            }
         }
         else
         {
