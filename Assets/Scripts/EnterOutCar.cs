@@ -15,18 +15,24 @@ public class EnterExitCar : MonoBehaviour
     public static event Action<bool> OnPlayerEnterExitCar;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !isPlayerInCar)
+        float distanceToCar = Vector3.Distance(player.transform.position, car.transform.position);
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            EnterCar();
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && isPlayerInCar)
-        {
-            ExitCar();
+            if (!isPlayerInCar && distanceToCar <= 10f) // Если игрок не в машине и находится на расстоянии до 10 метров
+            {
+                EnterCar();
+            }
+            else if (isPlayerInCar)
+            {
+                ExitCar();
+            }
         }
     }
 
     void EnterCar()
     {
+        GetComponent<Outline>().enabled = false;
         isPlayerInCar = true;
         OnPlayerEnterExitCar?.Invoke(isPlayerInCar);
         carCameraMap.SetActive(true);
