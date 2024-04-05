@@ -8,7 +8,8 @@ public class InteractionManager : MonoBehaviour
 
     public Weapon hoveredWeapon = null;
     public AmmoBox hoveredAmmoBox = null;
-    //public Canister hoveredCanister = null;
+    public Car hoveredCar = null;
+
 
     private void Awake()
     {
@@ -27,13 +28,15 @@ public class InteractionManager : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        bool hitWeapon = false;
+        bool hitDetected = false;
 
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 5f))
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
             Weapon weapon = objectHitByRaycast.GetComponent<Weapon>();
+            Car car = objectHitByRaycast.GetComponent<Car>();
+            PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
 
             // Проверяем, является ли объект оружием и не является ли он активным оружием
             if (weapon && !weapon.isActiveWeapon)
@@ -45,7 +48,7 @@ public class InteractionManager : MonoBehaviour
                 }
                 hoveredWeapon = weapon;
                 hoveredWeapon.GetComponent<Outline>().enabled = true;
-                hitWeapon = true;
+                hitDetected = true;
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -57,7 +60,7 @@ public class InteractionManager : MonoBehaviour
                 print("Selected Ammo");
                 hoveredAmmoBox = objectHitByRaycast.gameObject.GetComponent<AmmoBox>();
                 hoveredAmmoBox.GetComponent<Outline>().enabled = true;
-                hitWeapon = true;
+                hitDetected = true;
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -65,37 +68,42 @@ public class InteractionManager : MonoBehaviour
                     Destroy(objectHitByRaycast.gameObject);
                 }
             }
-            //if (objectHitByRaycast.GetComponent<Canister>())
-            //{
-            //    print("Selected canister");
-            //    hoveredCanister = objectHitByRaycast.gameObject.GetComponent<Canister>();
-            //    hoveredCanister.GetComponent<Outline>().enabled = true;
-            //    hitWeapon = true;
 
-            //    if (Input.GetKeyDown(KeyCode.F))
-            //    {
-            //        Destroy(objectHitByRaycast.gameObject);
-            //        //
-            //        Refuel(20f);
-            //    }
-            //}
-        }
-        //if (!hitWeapon && hoveredCanister)
-        //{
-        //     hoveredCanister.GetComponent<Outline>().enabled = false;
-        //     hoveredCanister = null; // Сбросим ссылку на последнее выделенное оружие
-        //}
-        if (!hitWeapon && hoveredAmmoBox)
-        {
-            hoveredAmmoBox.GetComponent<Outline>().enabled = false;
-            hoveredAmmoBox = null; // Сбросим ссылку на последнее выделенное оружие
-        }
-        // Если в этом кадре луч не попал в оружие, убираем выделение с последнего выделенного оружия.
-        if (!hitWeapon && hoveredWeapon)
-        {
-            hoveredWeapon.GetComponent<Outline>().enabled = false;
-            hoveredWeapon = null; // Сбросим ссылку на последнее выделенное оружие
+            if (car && playerMovement.hasFuelCanister)
+            {
+                print("Hovered over Car within 5 meters");
+                hitDetected = true;
+
+                // Включаем выделение машины
+                if (hoveredCar) hoveredCar.GetComponent<Outline>().enabled = false;
+                hoveredCar = car;
+                hoveredCar.GetComponent<Outline>().enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    hoveredCar.Refuel(60); // Заправляем машину на 60 единиц
+                    playerMovement.hasFuelCanister = false; // Удаляем канистру из "инвентаря" игрока
+                }
+            }
+
+            if (!hitDetected)
+            {
+                if (hoveredWeapon)
+                {
+                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                    hoveredWeapon = null;
+                }
+                if (hoveredAmmoBox)
+                {
+                    hoveredAmmoBox.GetComponent<Outline>().enabled = false;
+                    hoveredAmmoBox = null;
+                }
+                if (hoveredCar)
+                {
+                    hoveredCar.GetComponent<Outline>().enabled = false;
+                    hoveredCar = null;
+                }
+            }
         }
     }
-
 }

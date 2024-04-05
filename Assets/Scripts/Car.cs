@@ -86,6 +86,11 @@ public class Car : MonoBehaviour
         {
             fuel = 100f;
         }
+
+        if (!isEngineOn && fuel > 0)
+        {
+            isEngineOn = true;
+        }
     }
 
 
