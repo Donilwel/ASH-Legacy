@@ -44,7 +44,6 @@ public class HUDManager : MonoBehaviour
     {
         Weapon activeWeapon = WeaponManager.Instance.activeWeaponSlot.GetComponentInChildren<Weapon>();
         Weapon unActiveWeapon = GetUnActiveWeaponSlot().GetComponentInChildren<Weapon>();
-
         if (activeWeapon)
         {
             magazineAmmoUI.text = $"{activeWeapon.bulletsLeft / activeWeapon.bulletsPerBurst}";
@@ -55,6 +54,7 @@ public class HUDManager : MonoBehaviour
 
             if(unActiveWeapon)
             {
+
                 unActiveWeaponUI.sprite = GetWeaponSprite(unActiveWeapon.thisWeaponModel);
 
             }

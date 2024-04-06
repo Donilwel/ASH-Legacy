@@ -130,6 +130,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+
     public int CheckAmmoLeftFor(Weapon.WeaponModel thisWeaponModel)
     {
         switch (thisWeaponModel)

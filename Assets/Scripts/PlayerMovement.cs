@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     public Slider staminaBar;
     public Text staminaText;
 
+    public Slider hungerSlider;
+    public float currentHungry;
+    public float maxHungry = 100f;
+
     public bool hasFuelCanister = false;
     public GameObject fuelIcon;
 
@@ -60,6 +64,9 @@ public class PlayerMovement : MonoBehaviour
         staminaBar.value = stamina;
         healthBar.value = health;
 
+        hungerSlider.maxValue = maxHungry;
+        hungerSlider.value = currentHungry;
+
         lastYPosition = transform.position.y;
 
         // Настройка UI смерти
@@ -70,6 +77,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Time.timeScale = 1f;
         // Система стамины
+
+        HungrySystem();
+
         HandleStamina();
 
         // Перемещение
@@ -101,7 +111,16 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
-
+    void HungrySystem()
+    {
+        //опционально добавить логику голода для человека который находится в машине
+        currentHungry = speed == runSpeed ? Mathf.Max(currentHungry - Time.deltaTime, 0) : Mathf.Max(currentHungry - Time.deltaTime / 3, 0);
+        hungerSlider.value = currentHungry;
+        if(currentHungry == 0)
+        {
+            TakeDamage(Time.deltaTime/2);
+        }
+    }
     void HandleStamina()
     {
         if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isMoving && canRun)
