@@ -87,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Проверка на дамаг при падении
         CheckFallDamage();
-
         // Если здоровье <= 0, показываем экран смерти
         if (health <= 0)
         {
@@ -121,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
             TakeDamage(Time.deltaTime/2);
         }
     }
+
     void HandleStamina()
     {
         if (Input.GetKey(KeyCode.LeftShift) && stamina > 0 && isMoving && canRun)
@@ -206,6 +206,12 @@ public class PlayerMovement : MonoBehaviour
         {
             lastYPosition = transform.position.y;
         }
+    }
+
+    public void Eat(float amount)
+    {
+        currentHungry = Mathf.Clamp(currentHungry + amount, 0, maxHungry);
+        hungerSlider.value = currentHungry; // Обновляем UI сытости
     }
 
 

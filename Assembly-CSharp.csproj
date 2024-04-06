@@ -61,6 +61,7 @@
     <Compile Include="Assets/Scenes/InteractionManager.cs" />
     <Compile Include="Assets/Scripts/GlobalReferences.cs" />
     <Compile Include="Assets/Scripts/SpeedCar.cs" />
+    <Compile Include="Assets/Scripts/Food.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/DecalDestroyer.cs" />
     <Compile Include="Assets/Scripts/MiniCardMovement.cs" />
     <Compile Include="Assets/Scripts/Car.cs" />

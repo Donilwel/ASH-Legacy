@@ -9,6 +9,7 @@ public class InteractionManager : MonoBehaviour
     public Weapon hoveredWeapon = null;
     public AmmoBox hoveredAmmoBox = null;
     public Car hoveredCar = null;
+    public Food hoveredFood = null;
 
     private void Awake()
     {
@@ -71,6 +72,41 @@ public class InteractionManager : MonoBehaviour
                     }
                 }
 
+                if (objectHitByRaycast.GetComponent<Food>())
+                {
+                    print("Selected Food");
+                    Food foodItem = objectHitByRaycast.GetComponent<Food>();
+                    hoveredFood = foodItem;
+                    Outline outline = hoveredFood.GetComponent<Outline>();
+                    if (outline != null)
+                    {
+                        outline.enabled = true;
+                    }
+
+                    hitDetected = true;
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        if (playerMovement != null)
+                        {
+                            if (foodItem.foodType == Food.FoodType.HealthFood)
+                            {
+                                // Увеличиваем уровень сытости игрока
+                                playerMovement.currentHungry = Mathf.Min(playerMovement.currentHungry + foodItem.hungerRecoveryAmount, playerMovement.maxHungry);
+                            }
+                            else if (foodItem.foodType == Food.FoodType.BadFood)
+                            {
+                                // Наносим урон здоровью игрока
+                                playerMovement.currentHungry = Mathf.Min(playerMovement.currentHungry + foodItem.hungerRecoveryAmount, playerMovement.maxHungry);
+                                playerMovement.health = Mathf.Max(playerMovement.health - foodItem.healthDamageBadFood, 0);
+                            }
+                            playerMovement.healthBar.value = playerMovement.health;
+                            playerMovement.hungerSlider.value = playerMovement.currentHungry; // Обновите UI слайдера голода
+                            Destroy(objectHitByRaycast); // Удалите объект еды из сцены
+                        }
+                    }
+                }
+
                 if (car && playerMovement.hasFuelCanister)
                 {
                     print("Hovered over Car within 5 meters");
@@ -104,6 +140,11 @@ public class InteractionManager : MonoBehaviour
                     {
                         hoveredCar.GetComponent<Outline>().enabled = false;
                         hoveredCar = null;
+                    }
+                    if (hoveredFood)
+                    {
+                        hoveredFood.GetComponent<Outline>().enabled = false;
+                        hoveredFood = null;
                     }
                 }
             }

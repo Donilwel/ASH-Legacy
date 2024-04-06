@@ -90,10 +90,6 @@ public class SoundManager : MonoBehaviour
         emptyFuel.Play();
     }
 
-    public void PlayDeathSound()
-    {
-    }
-
     private void Update()
     {
         // Если игрок в машине

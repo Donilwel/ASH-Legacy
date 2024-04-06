@@ -1,34 +1,37 @@
 ﻿<Properties StartupConfiguration="{27A5DA0A-2277-B442-1EC1-E4784A61C5E4}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/InteractionManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Food.cs">
     <Files>
       <File FileName="Assets/Scripts/AmmoManager.cs" Line="3" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/Bullet.cs" />
-      <File FileName="Assets/Scripts/Weapon.cs" />
-      <File FileName="Assets/Scripts/PlayerMovement.cs" />
+      <File FileName="Assets/Scripts/Weapon.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMovement.cs" Line="123" Column="1" />
       <File FileName="Library/PackageCache/com.unity.collab-proxy@2.3.1/Editor/PlasticSCM/Configuration/CloudEdition/Welcome/AutoLogin.cs" />
-      <File FileName="Assets/Scripts/MouseMovement.cs" />
-      <File FileName="Assets/Scripts/GlobalReferences.cs" />
+      <File FileName="Assets/Scripts/MouseMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GlobalReferences.cs" Line="1" Column="1" />
       <File FileName="Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Shaders/Lit.shader" />
-      <File FileName="Assets/Scripts/SoundManager.cs" />
-      <File FileName="Assets/Scenes/InteractionManager.cs" Line="27" Column="6" />
-      <File FileName="Assets/Scripts/Car.cs" />
-      <File FileName="Assets/Scripts/WeaponManager.cs" />
-      <File FileName="Assets/Scripts/SpeedCar.cs" />
-      <File FileName="Assets/Scripts/MiniCardMovement.cs" />
-      <File FileName="Assets/Scripts/AmmoBox.cs" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="13" Column="1" />
+      <File FileName="Assets/Scenes/InteractionManager.cs" Line="84" Column="40" />
+      <File FileName="Assets/Scripts/Car.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponManager.cs" Line="83" Column="1" />
+      <File FileName="Assets/Scripts/SpeedCar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MiniCardMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AmmoBox.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/HUDManager.cs" />
       <File FileName="Assets/Menu/MenuStart.cs" />
-      <File FileName="Assets/Scripts/EnterOutCar.cs" />
+      <File FileName="Assets/Scripts/EnterOutCar.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Fuel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Food.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ASH-Legacy" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
+            <Node name="Assets" expanded="True">
               <Node name="Menu" expanded="True" />
               <Node name="Scenes" expanded="True" />
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="Food.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -37,7 +40,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b5d49ca3-0ea3-4fb9-89f7-e7d7968beb13" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c7268ce7-56de-457f-9262-6aa867999342" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
