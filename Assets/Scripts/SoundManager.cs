@@ -14,10 +14,13 @@ public class SoundManager : MonoBehaviour
     public AudioSource reloadingSoundM1911;
     public AudioSource reloadingSoundAK47;
 
+    public AudioSource chewing;
+
     public AudioSource emptyMagazineSoundM1911;
 
     public AudioSource engineSoundSource; // Источник звука двигателя
     public AudioSource emptyFuel;
+    public AudioSource canister;
 
 
     public Rigidbody carRigidbody; // Ссылка на Rigidbody автомобиля
@@ -43,7 +46,6 @@ public class SoundManager : MonoBehaviour
     {
         isPlayerInCar = isInCar;
     }
-
 
     private void Awake()
     {
@@ -88,6 +90,16 @@ public class SoundManager : MonoBehaviour
     public void PlayEngineStallSound()
     {
         emptyFuel.Play();
+    }
+
+    public void PlayChewingSound()
+    {
+        chewing.Play();
+    }
+
+    public void PlayCanistraSound()
+    {
+        canister.Play();
     }
 
     private void Update()

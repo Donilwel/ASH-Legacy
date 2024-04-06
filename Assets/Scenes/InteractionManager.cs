@@ -85,10 +85,11 @@ public class InteractionManager : MonoBehaviour
 
                     hitDetected = true;
 
-                    if (Input.GetKeyDown(KeyCode.F))
+                    if (Input.GetKeyDown(KeyCode.F) && playerMovement.currentHungry < playerMovement.maxHungry)
                     {
                         if (playerMovement != null)
                         {
+                            SoundManager.Instance.PlayChewingSound();
                             if (foodItem.foodType == Food.FoodType.HealthFood)
                             {
                                 // Увеличиваем уровень сытости игрока
@@ -96,13 +97,12 @@ public class InteractionManager : MonoBehaviour
                             }
                             else if (foodItem.foodType == Food.FoodType.BadFood)
                             {
-                                // Наносим урон здоровью игрока
                                 playerMovement.currentHungry = Mathf.Min(playerMovement.currentHungry + foodItem.hungerRecoveryAmount, playerMovement.maxHungry);
                                 playerMovement.health = Mathf.Max(playerMovement.health - foodItem.healthDamageBadFood, 0);
                             }
                             playerMovement.healthBar.value = playerMovement.health;
-                            playerMovement.hungerSlider.value = playerMovement.currentHungry; // Обновите UI слайдера голода
-                            Destroy(objectHitByRaycast); // Удалите объект еды из сцены
+                            playerMovement.hungerSlider.value = playerMovement.currentHungry; 
+                            Destroy(objectHitByRaycast);
                         }
                     }
                 }
@@ -119,6 +119,7 @@ public class InteractionManager : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.Y))
                     {
+                        SoundManager.Instance.PlayCanistraSound();
                         hoveredCar.Refuel(60); // Заправляем машину на 60 единиц
                         playerMovement.hasFuelCanister = false; // Удаляем канистру из "инвентаря" игрока
                     }
