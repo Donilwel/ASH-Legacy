@@ -194,7 +194,6 @@ public class PlayerMovement : MonoBehaviour
             if (fallDistance > safeFallDistance)
             {
                 float damage = (fallDistance - safeFallDistance) * fallDamageMultiplier;
-                SoundManager.Instance.PainSound();
                 TakeDamage(damage);
             }
 
@@ -211,6 +210,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Eat(float amount)
     {
+        SoundManager.Instance.PlayChewingSound();
         currentHungry = Mathf.Clamp(currentHungry + amount, 0, maxHungry);
         hungerSlider.value = currentHungry; // Обновляем UI сытости
     }
@@ -218,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        SoundManager.Instance.PainSound();
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
         healthBar.value = health; // Обновляем значение слайдера здоровья

@@ -90,19 +90,16 @@ public class InteractionManager : MonoBehaviour
                     {
                         if (playerMovement != null)
                         {
-                            SoundManager.Instance.PlayChewingSound();
                             if (foodItem.foodType == Food.FoodType.HealthFood)
                             {
                                 // Увеличиваем уровень сытости игрока
-                                playerMovement.currentHungry = Mathf.Min(playerMovement.currentHungry + foodItem.hungerRecoveryAmount, playerMovement.maxHungry);
+                                playerMovement.Eat(foodItem.hungerRecoveryAmount);
                             }
                             else if (foodItem.foodType == Food.FoodType.BadFood)
                             {
-                                playerMovement.currentHungry = Mathf.Min(playerMovement.currentHungry + foodItem.hungerRecoveryAmount, playerMovement.maxHungry);
-                                playerMovement.health = Mathf.Max(playerMovement.health - foodItem.healthDamageBadFood, 0);
+                                playerMovement.Eat(foodItem.hungerRecoveryAmount);
+                                playerMovement.TakeDamage(foodItem.healthDamageBadFood);
                             }
-                            playerMovement.healthBar.value = playerMovement.health;
-                            playerMovement.hungerSlider.value = playerMovement.currentHungry; 
                             Destroy(objectHitByRaycast);
                         }
                     }
@@ -125,7 +122,6 @@ public class InteractionManager : MonoBehaviour
                     {
                         if (playerMovement != null)
                         {
-                            SoundManager.Instance.PlayChewingSound();
                             if (medicineChestItem.typeMedChest == MedicineChest.TypeMedChest.LowHelp)
                             {
                                 playerMovement.health = Mathf.Min(playerMovement.health + medicineChestItem.lowMedChest, playerMovement.maxHealth);
