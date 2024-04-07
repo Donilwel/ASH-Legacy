@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource engineSoundSource; // Источник звука двигателя
     public AudioSource emptyFuel;
     public AudioSource canister;
+    public AudioSource pain;
 
 
     public Rigidbody carRigidbody; // Ссылка на Rigidbody автомобиля
@@ -100,6 +101,11 @@ public class SoundManager : MonoBehaviour
     public void PlayCanistraSound()
     {
         canister.Play();
+    }
+
+    public void PainSound()
+    {
+        pain.Play();
     }
 
     private void Update()

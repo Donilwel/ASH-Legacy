@@ -64,6 +64,7 @@
     <Compile Include="Assets/Scripts/Food.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/DecalDestroyer.cs" />
     <Compile Include="Assets/Scripts/MiniCardMovement.cs" />
+    <Compile Include="Assets/Scripts/MedicineChest.cs" />
     <Compile Include="Assets/Scripts/Car.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleExamples.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ParticleMenu.cs" />

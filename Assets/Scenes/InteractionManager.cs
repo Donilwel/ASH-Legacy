@@ -10,6 +10,7 @@ public class InteractionManager : MonoBehaviour
     public AmmoBox hoveredAmmoBox = null;
     public Car hoveredCar = null;
     public Food hoveredFood = null;
+    public MedicineChest hoveredMedicineChest = null;
 
     private void Awake()
     {
@@ -107,6 +108,42 @@ public class InteractionManager : MonoBehaviour
                     }
                 }
 
+                if (objectHitByRaycast.GetComponent<MedicineChest>())
+                {
+                    print("Selected Food");
+                    MedicineChest medicineChestItem = objectHitByRaycast.GetComponent<MedicineChest>();
+                    hoveredMedicineChest = medicineChestItem;
+                    Outline outline = hoveredMedicineChest.GetComponent<Outline>();
+                    if (outline != null)
+                    {
+                        outline.enabled = true;
+                    }
+
+                    hitDetected = true;
+
+                    if (Input.GetKeyDown(KeyCode.F) && playerMovement.health < playerMovement.maxHealth)
+                    {
+                        if (playerMovement != null)
+                        {
+                            SoundManager.Instance.PlayChewingSound();
+                            if (medicineChestItem.typeMedChest == MedicineChest.TypeMedChest.LowHelp)
+                            {
+                                playerMovement.health = Mathf.Min(playerMovement.health + medicineChestItem.lowMedChest, playerMovement.maxHealth);
+                            }
+                            else if (medicineChestItem.typeMedChest == MedicineChest.TypeMedChest.MiddleHelp)
+                            {
+                                playerMovement.health = Mathf.Min(playerMovement.health + medicineChestItem.middleMedChest, playerMovement.maxHealth);
+                            }
+                            else if (medicineChestItem.typeMedChest == MedicineChest.TypeMedChest.HightHelp)
+                            {
+                                playerMovement.health = Mathf.Min(playerMovement.health + medicineChestItem.hightMedChest, playerMovement.maxHealth);
+                            }
+                            playerMovement.healthBar.value = playerMovement.health;
+                            Destroy(objectHitByRaycast);
+                        }
+                    }
+                }
+
                 if (car && playerMovement.hasFuelCanister)
                 {
                     print("Hovered over Car within 5 meters");
@@ -146,6 +183,11 @@ public class InteractionManager : MonoBehaviour
                     {
                         hoveredFood.GetComponent<Outline>().enabled = false;
                         hoveredFood = null;
+                    }
+                    if (hoveredMedicineChest)
+                    {
+                        hoveredMedicineChest.GetComponent<Outline>().enabled = false;
+                        hoveredMedicineChest = null;
                     }
                 }
             }

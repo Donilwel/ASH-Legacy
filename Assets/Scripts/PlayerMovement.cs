@@ -194,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
             if (fallDistance > safeFallDistance)
             {
                 float damage = (fallDistance - safeFallDistance) * fallDamageMultiplier;
+                SoundManager.Instance.PainSound();
                 TakeDamage(damage);
             }
 
