@@ -17,7 +17,6 @@ public class Car : MonoBehaviour
     public float fuelConsumptionRate = 0.1f; // Скорость расхода топлива
     private bool isEngineOn = true; // Состояние двигателя
 
-
     private void Start()
     {
         carRigidbody.centerOfMass -= new Vector3(0, 0.5f, 0);

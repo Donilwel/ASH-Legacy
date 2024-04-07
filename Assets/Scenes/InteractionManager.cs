@@ -107,7 +107,7 @@ public class InteractionManager : MonoBehaviour
 
                 if (objectHitByRaycast.GetComponent<MedicineChest>())
                 {
-                    print("Selected Food");
+                    print("Selected Medicine Chest");
                     MedicineChest medicineChestItem = objectHitByRaycast.GetComponent<MedicineChest>();
                     hoveredMedicineChest = medicineChestItem;
                     Outline outline = hoveredMedicineChest.GetComponent<Outline>();
