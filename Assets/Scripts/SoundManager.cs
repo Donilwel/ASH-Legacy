@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource reloadingSoundAK47;
 
     public AudioSource chewing;
+    public AudioSource breath;
 
     public AudioSource emptyMagazineSoundM1911;
 
@@ -106,6 +107,10 @@ public class SoundManager : MonoBehaviour
     public void PainSound()
     {
         pain.Play();
+    }
+    public void PlayDeepBreath()
+    {
+        breath.Play();
     }
 
     private void Update()

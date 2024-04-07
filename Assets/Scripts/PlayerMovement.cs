@@ -143,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
         stamina = Mathf.Clamp(stamina, 0, maxStamina);
         if (stamina <= 0)
         {
+            SoundManager.Instance.PlayDeepBreath();
             canRun = false;
         }
         staminaBar.value = stamina;
