@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (damage > 5)
+        if (damage >= 5)
         {
             SoundManager.Instance.PainSound();
         }
