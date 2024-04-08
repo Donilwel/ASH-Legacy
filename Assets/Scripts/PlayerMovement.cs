@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
                 stamina += staminaRecoveryPerSecond * Time.deltaTime;
                 if (stamina >= 20)
                 {
+                    SoundManager.Instance.breath.Stop();
                     canRun = true;
                 }
             }
@@ -219,7 +220,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        SoundManager.Instance.PainSound();
+        if (damage > 5)
+        {
+            SoundManager.Instance.PainSound();
+        }
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
         healthBar.value = health; // Обновляем значение слайдера здоровья

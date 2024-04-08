@@ -40,8 +40,7 @@ public class RadiationManager : MonoBehaviour
             radiationCooldown -= Time.deltaTime;
             if (radiationCooldown <= 0)
             {
-                isRadiationActive = true; // Возобновляем радиацию
-                onCooldown = false; // Снимаем статус ожидания
+                StartRadiation();
             }
         }
         radiationIcon.SetActive(isRadiationActive);
