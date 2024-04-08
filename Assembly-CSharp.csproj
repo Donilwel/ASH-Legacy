@@ -86,6 +86,7 @@
     <Compile Include="Assets/Scripts/SoundManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ExtinguishableFire.cs" />
     <Compile Include="Assets/Scripts/MouseMovement.cs" />
+    <Compile Include="Assets/Scripts/GameTimer.cs" />
     <Compile Include="Assets/Scripts/PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

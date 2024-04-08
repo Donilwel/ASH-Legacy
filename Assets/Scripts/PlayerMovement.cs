@@ -230,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
         deathScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        FindObjectOfType<GameTimer>().PlayerDied();
         Time.timeScale = 0f; // Останавливаем время
     }
 
