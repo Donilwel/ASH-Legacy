@@ -134,6 +134,10 @@ public class InteractionManager : MonoBehaviour
                             {
                                 playerMovement.health = Mathf.Min(playerMovement.health + medicineChestItem.hightMedChest, playerMovement.maxHealth);
                             }
+                            else if (medicineChestItem.typeMedChest == MedicineChest.TypeMedChest.RadiationHelp)
+                            {
+                                RadiationManager.Instance.StopRadiationTemporarily();
+                            }
                             playerMovement.healthBar.value = playerMovement.health;
                             Destroy(objectHitByRaycast);
                         }

@@ -14,6 +14,7 @@ public class MedicineChest : MonoBehaviour
     {
         LowHelp,
         MiddleHelp,
-        HightHelp
+        HightHelp,
+        RadiationHelp
     }
 }
