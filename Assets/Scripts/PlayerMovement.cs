@@ -227,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
+        SoundManager.Instance.chewing.Stop();
         deathScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

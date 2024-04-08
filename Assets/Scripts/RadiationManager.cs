@@ -4,7 +4,7 @@ public class RadiationManager : MonoBehaviour
 {
     public static RadiationManager Instance { get; private set; }
 
-    public bool isRadiationActive = true; // Пусть радиация изначально активна
+    public bool isRadiationActive = true;
     public float radiationDamagePerSecond = 5f;
     private PlayerMovement player;
     public float radiationCooldown = 60f; // Отсчет времени до следующей радиации
@@ -49,12 +49,14 @@ public class RadiationManager : MonoBehaviour
 
     public void StartRadiation()
     {
+        SoundManager.Instance.WarningSound();
         isRadiationActive = true;
         onCooldown = false; // Отключаем ожидание, если оно было включено
     }
 
     public void StopRadiationTemporarily()
     {
+        SoundManager.Instance.sirena.Stop();
         isRadiationActive = false;
         onCooldown = true; // Включаем отсчет времени до возобновления радиации
         radiationCooldown = 60f; // Сбрасываем время до следующего возобновления радиации

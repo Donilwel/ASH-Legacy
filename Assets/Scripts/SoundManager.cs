@@ -17,6 +17,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource chewing;
     public AudioSource breath;
 
+    public AudioSource sirena;
+
     public AudioSource emptyMagazineSoundM1911;
 
     public AudioSource engineSoundSource; // Источник звука двигателя
@@ -111,6 +113,11 @@ public class SoundManager : MonoBehaviour
     public void PlayDeepBreath()
     {
         breath.Play();
+    }
+
+    public void WarningSound()
+    {
+        sirena.Play();
     }
 
     private void Update()
