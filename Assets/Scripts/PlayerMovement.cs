@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
     void HungrySystem()
     {
         //опционально добавить логику голода для человека который находится в машине
-        currentHungry = speed == runSpeed ? Mathf.Max(currentHungry - Time.deltaTime, 0) : Mathf.Max(currentHungry - Time.deltaTime / 3, 0);
+        currentHungry = speed == runSpeed ? Mathf.Max(currentHungry - Time.deltaTime, 0) : Mathf.Max(currentHungry - Time.deltaTime / 2, 0);
         hungerSlider.value = currentHungry;
         if(currentHungry == 0)
         {
