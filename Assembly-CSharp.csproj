@@ -76,6 +76,7 @@
     <Compile Include="Assets/Scripts/WeaponManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/Shared/Scripts/GunAim.cs" />
     <Compile Include="Assets/Scripts/RadiationManager.cs" />
+    <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/UnityTechnologies/EffectExamples/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/Scripts/AmmoManager.cs" />
     <Compile Include="Assets/Scripts/AmmoBox.cs" />
